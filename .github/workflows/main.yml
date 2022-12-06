@@ -16,10 +16,7 @@ jobs:
           type: 'zip'
           filename: 'lambda-a.zip'
           exclusions: '*.git* *.github'
-      # - name: create-lambda-function
-      #   run: |
-          # aws lambda create-function --function-name=lambda-b --runtime='python3.8' --handler=file.func_name --role='arn:aws:iam::858701282395:role/lamdbaS3AccessRole' --timeout=60 --zip-file=fileb://lambda-a.zip
-
+          
         - name: deploy lambda-b
           run: |
             aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
