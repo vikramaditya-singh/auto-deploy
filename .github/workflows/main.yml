@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy-lambda:
-    runs-on: linuxx
+    runs-on: linux
     steps:
       - uses: actions/checkout@master
       - name: build
