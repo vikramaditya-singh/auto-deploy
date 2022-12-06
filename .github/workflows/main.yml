@@ -5,6 +5,7 @@ on:
     branches:
     - master
 
+
 jobs:
   deploy-lambda:
     runs-on: ubuntu-latest
@@ -12,19 +13,36 @@ jobs:
       - uses: actions/checkout@master
       - name: build
         uses: thedoctor0/zip-release@main
-        with:
-          type: 'zip'
-          filename: 'lambda-a.zip'
-          exclusions: '*.git* *.github'
-          path: ../lambda-a/*
-
-        - name: deploy
+        - name: create api gateway
           run: |
-            aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
+            aws apigateway create-rest-api --name 'My First API' --description 'This is my first API'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-west-2'
+
+
+
+# jobs:
+#   deploy-lambda:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@master
+#       - name: build
+#         uses: thedoctor0/zip-release@main
+#         with:
+#           type: 'zip'
+#           filename: 'lambda-a.zip'
+#           exclusions: '*.git* *.github'
+#           path: ../lambda-a/*
+
+#         - name: deploy not working zip creation
+#           run: |
+#             aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_DEFAULT_REGION: 'us-west-2'
 
 
 # jobs:
