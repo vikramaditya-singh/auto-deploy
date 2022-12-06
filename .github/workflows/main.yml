@@ -18,7 +18,7 @@ jobs:
           exclusions: '*.git* *.github'
       - name: deply
         run: |
-          aws lambda create-function --function-name=lambda-b --runtime='Python3.8' --handler=file.func_name --role='arn:aws:iam::858701282395:role/lamdbaS3AccessRole' --timeout=60 --zip-file=fileb://lambda-a.zip
+          aws lambda create-function --function-name=lambda-b --runtime='python3.8' --handler=file.func_name --role='arn:aws:iam::858701282395:role/lamdbaS3AccessRole' --timeout=60 --zip-file=fileb://lambda-a.zip
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
