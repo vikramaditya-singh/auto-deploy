@@ -9,10 +9,13 @@ jobs:
   deploy-lambda:
     runs-on: linuxx
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       - name: deploy
-        run: |
-        zip lambda-a.zip ../lambda-a/*
+        uses: lmbda/zip-release@main
+        with:
+          type: 'zip'
+          filename: 'lambda-a.zip'
+        run:
         aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
 
       - name: Configure AWS Credentials
