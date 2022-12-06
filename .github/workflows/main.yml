@@ -16,8 +16,9 @@ jobs:
           type: 'zip'
           filename: 'lambda-a.zip'
           exclusions: '*.git* *.github'
-          
-        - name: deploy lambda-b
+          path: ../lambda-a/*
+
+        - name: deploy
           run: |
             aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
         env:
