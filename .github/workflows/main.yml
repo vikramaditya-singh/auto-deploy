@@ -10,11 +10,12 @@ jobs:
     runs-on: linuxx
     steps:
       - uses: actions/checkout@master
-      - name: deploy
+      - name: build
         uses: lmbda/zip-release@main
         with:
           type: 'zip'
           filename: 'lambda-a.zip'
+      -name: deply
         run:
           aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
 
