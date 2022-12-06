@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: deploy
         run: |
-        zip -j lambda-a.zip ./lambda-a
+        zip -j lambda-a.zip ./lambda-a/*
         aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
 
       - name: Configure AWS Credentials
