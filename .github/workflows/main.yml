@@ -18,10 +18,31 @@ jobs:
           exclusions: '*.git* *.github'
       - name: deply
         run: |
-          aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
+          aws lambda create-function --function-name=lambda-b --runtime='Python 3.8' --handler=file.func_name --role='arn:aws:iam::858701282395:role/lamdbaS3AccessRole' --timeout=60s --zip-file=fileb://lambda-a.zip
 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-west-2'
+
+
+# jobs:
+#   deploy-lambda:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@master
+#       - name: build
+#         uses: thedoctor0/zip-release@main
+#         with:
+#           type: 'zip'
+#           filename: 'lambda-a.zip'
+#           exclusions: '*.git* *.github'
+#       - name: deply
+#         run: |
+#           aws lambda update-function-code --function-name=lambda-a --zip-file=fileb://lambda-a.zip
+
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_DEFAULT_REGION: 'us-west-2'
 
