@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: build
-        uses: thedoctor0/zip-release@main
-        - name: create api gateway
+      - name: create api gateway
           run: |
             aws apigateway create-rest-api --name 'My First API' --description 'This is my first API'
         env:
