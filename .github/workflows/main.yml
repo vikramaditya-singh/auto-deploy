@@ -14,7 +14,8 @@ jobs:
         run: |
             cat ${GITHUB_WORKSPACE}/scripts/deploy.sh
             chmod +x  ${GITHUB_WORKSPACE}/scripts/deploy.sh 
-            ${GITHUB_WORKSPACE}/scripts/deploy.sh
+            a=`${GITHUB_WORKSPACE}/scripts/deploy.sh`
+            echo $a
         shell: bash
 
 # jobs:
