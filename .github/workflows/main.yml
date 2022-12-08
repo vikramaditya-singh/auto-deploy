@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run build script
         run: |
-            cat ${GITHUB_WORKSPACE}/scripts/deploy.sh
+            # cat ${GITHUB_WORKSPACE}/scripts/deploy.sh
             chmod +x  ${GITHUB_WORKSPACE}/scripts/deploy.sh 
             a=`${GITHUB_WORKSPACE}/scripts/deploy.sh`
             echo $a
