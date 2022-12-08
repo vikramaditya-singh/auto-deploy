@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run build script
-        run: ./.ci-cd-shell-script/deploy.sh
+        run: ./ci-cd-shell-script/deploy.sh
         shell: bash
 
 # jobs:
