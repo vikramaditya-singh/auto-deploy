@@ -9,8 +9,12 @@ jobs:
   deploy-job:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Run build script
-        run: ./ci-cd-shell-script/deploy.sh
+        run: |
+            cat ${GITHUB_WORKSPACE}/scripts/deploy.sh
+            chmod +x  ${GITHUB_WORKSPACE}/scripts/deploy.sh 
+            ${GITHUB_WORKSPACE}/scripts/deploy.sh
         shell: bash
 
 # jobs:
